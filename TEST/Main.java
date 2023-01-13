@@ -1,12 +1,3 @@
-/*
-        1
-       / \
-      6   4
-     / \   \
-    2  7    3
-             \
-              5
- */
 import java.io.*;
 import java.util.*;
 
@@ -23,8 +14,21 @@ public class Main {
 
         // 첫번째 줄 읽어와서 N 에 넣어주기
         N = Integer.parseInt(br.readLine());
+        /*
+            BufferedReader 사용 시 ..
+
+            <주의할 점 2가지>
+            1.
+            readLine() 시 리턴값을 String으로 고정되기에 String이 아닌 다른 타입으로
+            입력을 받을려면 형변환을 꼭 해주어야한다.
+            2.
+            예외처리를 꼭 해주어야한다.
+            readLine을 할때마다 try & catch를 활용하여 예외처리를 해주어도 되지만
+            대개 throws IOException을 통하여 작업한다.
+         */
 
         isVisit = new boolean[N + 1];
+        System.out.println("isVisit[]의 length: " + isVisit.length);
         list = new ArrayList[N + 1];
         parent = new int[N + 1];
 
@@ -52,6 +56,7 @@ public class Main {
 
     public static void dfs(int index) {
         isVisit[index] = true; // 루트는 방문됨
+
         System.out.println(index + " 번 노드를 방문해보자.");
         System.out.println("---------------" );
 
@@ -67,10 +72,12 @@ public class Main {
                 System.out.println("2. i : " + i + " / index : " + index);
                 System.out.println(i + " 번 노드의 부모값은 " + index + " 이다. -> 저장");
                 System.out.println();
+
                 parent[i] = index; // parent list 에 각 노드들의 부모값을 저장해준다
 
                 System.out.println("다음으로 " + i + " 번 노드를 방문해보자.");
                 System.out.println("---------------" );
+
                 dfs(i);
             } else {
                 System.out.println(i + " 번 노드는 이미 방문되었다.");
