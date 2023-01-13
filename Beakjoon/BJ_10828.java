@@ -1,3 +1,10 @@
+/*
+    입력 방법 : BufferedReader
+             : BufferedReader는 한 줄로 읽기 때문에
+               push의 경우 단어를 구분하기 위해 공백을 기준으로
+               문자열을 분리해주어야하니 StringTokenizer을 사용한다.
+ */
+
 import java.io.*;
 import java.util.*;
 
@@ -77,7 +84,7 @@ public class BJ_10828 {
         if(size == 0) {
             return -1;
         } else {
-            return stack[size -1];
+            return stack[size - 1];
         }
     }
 
