@@ -21,7 +21,7 @@ public class Main {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        // 첫번째 줄의 노드의 개수를 N 에 넣어주기
+        // 첫번째 줄 읽어와서 N 에 넣어주기
         N = Integer.parseInt(br.readLine());
 
         isVisit = new boolean[N + 1];
@@ -34,6 +34,7 @@ public class Main {
 
         for(int i = 0;i < N - 1;i++) { // 연결된 노드 값들을 입력받는다
             st = new StringTokenizer(br.readLine());
+
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
 
@@ -44,19 +45,41 @@ public class Main {
         dfs(1); // 트리의 루트는 1
 
         for(int i = 2;i < parent.length;i++) { // 결과값 출력
-            System.out.println(parent[i]);
+            System.out.println("result : " + parent[i]);
         }
 
     }
 
     public static void dfs(int index) {
-        isVisit[index] = true;
+        isVisit[index] = true; // 루트는 방문됨
+        System.out.println(index + " 번 노드를 방문해보자.");
+        System.out.println("---------------" );
+
         for(int i : list[index]) {
-            if(!isVisit[i]) {
+            System.out.println("1. i : " + i + " / index : " + index);
+            System.out.println(index + " 번 노드의 값은 " + i + " 이다." );
+            System.out.println();
+
+            if(!isVisit[i]) { // 만약 방문되지 않은 노드이면
+                System.out.println(i + " 번 노드는 방문 되지 않았다.");
+                System.out.println();
+
+                System.out.println("2. i : " + i + " / index : " + index);
+                System.out.println(i + " 번 노드의 부모값은 " + index + " 이다. -> 저장");
+                System.out.println();
                 parent[i] = index; // parent list 에 각 노드들의 부모값을 저장해준다
+
+                System.out.println("다음으로 " + i + " 번 노드를 방문해보자.");
+                System.out.println("---------------" );
                 dfs(i);
+            } else {
+                System.out.println(i + " 번 노드는 이미 방문되었다.");
+                System.out.println();
             }
         }
+
+        System.out.println(index + " 번 노드는 이미 방문되었다.");
+        System.out.println("---------------" );
     }
 
 

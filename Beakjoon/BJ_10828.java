@@ -8,7 +8,7 @@
 import java.io.*;
 import java.util.*;
 
-public class BJ_10828 {
+public class Main {
 
     public static int[] stack;
     public static int size = 0;

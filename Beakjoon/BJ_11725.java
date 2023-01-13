@@ -10,7 +10,7 @@
 import java.io.*;
 import java.util.*;
 
-public class BJ_11725 {
+public class Main {
     static int N; // 노드의 개수
     static int[] parent; // 부모노드 저장
     static boolean[] isVisit; // 방문여부 확인
@@ -21,7 +21,7 @@ public class BJ_11725 {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        // 첫번째 줄의 노드의 개수를 N 에 넣어주기
+        // 첫번째 줄 읽어와서 N 에 넣어주기
         N = Integer.parseInt(br.readLine());
 
         isVisit = new boolean[N + 1];
