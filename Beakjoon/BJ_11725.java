@@ -15,6 +15,19 @@ public class Main {
         // 첫번째 줄 읽어와서 N 에 넣어주기
         N = Integer.parseInt(br.readLine());
 
+        /*
+            BufferedReader 사용 시 ..
+
+            <주의할 점 2가지>
+            1.
+            readLine() 시 리턴값을 String으로 고정되기에 String이 아닌 다른 타입으로
+            입력을 받을려면 형변환을 꼭 해주어야한다.
+            2.
+            예외처리를 꼭 해주어야한다.
+            readLine을 할때마다 try & catch를 활용하여 예외처리를 해주어도 되지만
+            대개 throws IOException을 통하여 작업한다.
+         */
+
         isVisit = new boolean[N + 1];
         list = new ArrayList[N + 1];
         parent = new int[N + 1];
