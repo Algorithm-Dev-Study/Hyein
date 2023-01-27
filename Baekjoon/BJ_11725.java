@@ -1,3 +1,23 @@
+//BJ_11725
+/*
+주목해야 할 부분은 트리 구조의 특징이다.
+트리는 그래프의 특수한 형태로 어떤 정점의 인접한 정점은 반드시 부모 노드 혹은 자식 노드라는 특징이 있다.
+이를 이용하여 루트 노드에서부터 탐색을 시작하면 특정 노드의 부모 노드를 알 수 있다.
+
+위의 트리를 예시로 들어 설명하자면
+루트 노드 1 방문
+-> 1의 인접한 정점은 4와 6
+-> 1이 루트 노드이므로 4와 6은 전부 자식 노드
+-> 즉 4와 6의 부모 노드는 1
+
+노드 4 방문
+-> 4의 인접한 정점은 1, 2, 7
+-> 이 중 1은 이미 방문했으므로 인접한 정점을 찾는 과정에서 제외(부모 노드)
+-> 남은 2와 7은 자식 노드
+-> 즉 2와 7의 부모 노드는 4
+
+이러한 과정을 통해 특정 노드의 부모 노드를 알아낼 수 있다.
+ */
 import java.io.*;
 import java.util.*;
 
@@ -14,19 +34,6 @@ public class Main {
 
         // 첫번째 줄 읽어와서 N 에 넣어주기
         N = Integer.parseInt(br.readLine());
-
-        /*
-            BufferedReader 사용 시 ..
-
-            <주의할 점 2가지>
-            1.
-            readLine() 시 리턴값을 String으로 고정되기에 String이 아닌 다른 타입으로
-            입력을 받을려면 형변환을 꼭 해주어야한다.
-            2.
-            예외처리를 꼭 해주어야한다.
-            readLine을 할때마다 try & catch를 활용하여 예외처리를 해주어도 되지만
-            대개 throws IOException을 통하여 작업한다.
-         */
 
         isVisit = new boolean[N + 1];
         list = new ArrayList[N + 1];
@@ -55,38 +62,17 @@ public class Main {
     }
 
     public static void dfs(int index) {
+        System.out.println("isVisit[" + index + "] = true;");
         isVisit[index] = true; // 루트는 방문됨
 
-        System.out.println(index + " 번 노드를 방문해보자.");
-        System.out.println("---------------" );
-
         for(int i : list[index]) {
-            System.out.println("1. i : " + i + " / index : " + index);
-            System.out.println(index + " 번 노드의 값은 " + i + " 이다." );
-            System.out.println();
-
+            System.out.println("list[" + index + "]");
             if(!isVisit[i]) { // 만약 방문되지 않은 노드이면
-                System.out.println(i + " 번 노드는 방문 되지 않았다.");
-                System.out.println();
-
-                System.out.println("2. i : " + i + " / index : " + index);
-                System.out.println(i + " 번 노드의 부모값은 " + index + " 이다. -> 저장");
-                System.out.println();
-
+                System.out.println("parent[" + i + "] = " + index + ";");
                 parent[i] = index; // parent list 에 각 노드들의 부모값을 저장해준다
-
-                System.out.println("다음으로 " + i + " 번 노드를 방문해보자.");
-                System.out.println("---------------" );
-
                 dfs(i);
-            } else {
-                System.out.println(i + " 번 노드는 이미 방문되었다.");
-                System.out.println();
             }
         }
-
-        System.out.println(index + " 번 노드는 이미 방문되었다.");
-        System.out.println("---------------" );
     }
 
 

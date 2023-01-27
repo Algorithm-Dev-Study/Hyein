@@ -1,2 +1,31 @@
-99
-4 5
+isVisit[1] = true;
+list[1]
+parent[6] = 1;
+isVisit[6] = true;
+list[6]
+list[6]
+parent[3] = 6;
+isVisit[3] = true;
+list[3]
+parent[5] = 3;
+isVisit[5] = true;
+list[5]
+list[3]
+list[1]
+parent[4] = 1;
+isVisit[4] = true;
+list[4]
+list[4]
+parent[2] = 4;
+isVisit[2] = true;
+list[2]
+list[4]
+parent[7] = 4;
+isVisit[7] = true;
+list[7]
+result : 4
+result : 6
+result : 1
+result : 3
+result : 1
+result : 4
