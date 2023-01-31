@@ -6,16 +6,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
-    static String str;
-    static String explosionStr;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        str = br.readLine();
+        String str = br.readLine();
         String[] strArray = str.split("");
 
-        explosionStr = br.readLine();
+        String explosionStr = br.readLine();
         String[] expArray = explosionStr.split("");
 
         StringBuilder result = new StringBuilder();
@@ -35,9 +33,9 @@ public class Main {
         }
 
         if(result.length() == 0) {
-            System.out.println("FRULA");
+            System.out.print("FRULA");
         } else {
-            System.out.println(result);
+            System.out.print(result);
         }
 
     }
